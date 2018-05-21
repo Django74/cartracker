@@ -1,11 +1,14 @@
 let db = require('../db');
 
 class CarsService {
-    getCars() {
+    getCars(callback) {
         let sql = "SELECT * from cars";
         db.query(sql, (err, results) => {
-           if (err) throw err;
-           return results;
+           if (err) {
+               throw err;
+           } else {
+               callback(results);
+           }
         });
     }
 
