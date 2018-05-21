@@ -16,7 +16,7 @@ class CarsController {
 
     getCars(req, res) {
         let cars = CarsService.getCars();
-        res.send(cars);
+        res.json(cars);
     }
 
     getSingleCar(req, res) {

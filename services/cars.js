@@ -3,18 +3,19 @@ let db = require('../db');
 class CarsService {
     getCars() {
         let sql = "SELECT * from cars";
-        return db.query(sql, (err, results) => {
+        db.query(sql, (err, results) => {
            if (err) throw err;
+           return results;
         });
     }
 
     getSingleCar(id) {
     }
 
-    postCars() {
+    addCar(carInfo) {
     };
 
-    putCars() {
+    updateCar(id, carInfo) {
     }
 
     deleteCars(id) {

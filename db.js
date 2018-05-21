@@ -3,6 +3,6 @@ let connection = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'curveDental'
+    database: 'curve-dental'
 });
 module.exports = connection;
