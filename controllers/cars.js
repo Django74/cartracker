@@ -73,7 +73,7 @@ class CarsController {
 
     deleteCar(req, res) {
         let id = req.params.id;
-        CarsService.deleteCars(id, (result) => {
+        CarsService.deleteCar(id, (result) => {
             res.send(result);
         });
     }

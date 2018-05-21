@@ -53,7 +53,7 @@ class CarsService {
         });
     }
 
-    deleteCars(id, callback) {
+    deleteCar(id, callback) {
         let sql = "DELETE FROM cars WHERE id = ?";
         db.query(sql, [id], (err, results) => {
             if (err) {
