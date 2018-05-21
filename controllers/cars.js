@@ -9,9 +9,9 @@ class CarsController {
     registerRoutes() {
         this.router.get('/', this.getCars.bind(this));
         this.router.get('/:id', this.getSingleCar.bind(this));
-        this.router.post('/', this.postCars.bind(this));
-        this.router.put('/:id', this.putCars.bind(this));
-        this.router.delete('/:id', this.deleteCars.bind(this));
+        this.router.post('/', this.postCar.bind(this));
+        this.router.put('/:id', this.putCar.bind(this));
+        this.router.delete('/:id', this.deleteCar.bind(this));
     }
 
     getCars(req, res) {
@@ -31,7 +31,7 @@ class CarsController {
         });
     }
 
-    postCars(req, res) {
+    postCar(req, res) {
         let carInfo = req.body;
 
         CarsService.addCar(carInfo, (result) => {
@@ -44,7 +44,7 @@ class CarsController {
         });
     };
 
-    putCars(req, res) {
+    putCar(req, res) {
         let id = req.params.id;
         CarsService.getSingleCar(id, (existingCar) => {
             if (!existingCar) {
@@ -71,7 +71,7 @@ class CarsController {
         });
     }
 
-    deleteCars(req, res) {
+    deleteCar(req, res) {
         let id = req.params.id;
         CarsService.deleteCars(id, (result) => {
             res.send(result);

@@ -13,7 +13,7 @@ class CarsService {
     }
 
     getSingleCar(id, callback) {
-        let sql =   "SELECT * FROM cars WHERE id=?";
+        let sql = "SELECT * FROM cars WHERE id=?";
         db.query(sql, [id], (err, results) => {
             if (err) {
                 throw err;
