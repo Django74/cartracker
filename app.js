@@ -8,6 +8,7 @@ let bodyParser = require('body-parser');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let CarsController = require('./controllers/cars');
+let TasksController = require('./controllers/tasks');
 
 let app = express();
 let port = process.env.PORT || 3000;
@@ -24,10 +25,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set up routes
 let carsRouter = express.Router();
 app.use('/cars', carsRouter);
 
+let tasksRouter = express.Router();
+carsRouter.use('/tasks', tasksRouter);
+
 let carsAPI = new CarsController(carsRouter);
+let tasksAPI = new TasksController(carsRouter);
 // app.use('/users', usersRouter);
 
 
