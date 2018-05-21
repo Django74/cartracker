@@ -9,7 +9,7 @@ class TasksController {
     registerRoutes() {
         this.router.get('/', this.getTasks.bind(this));
         this.router.get('/:id', this.getSingleTask.bind(this));
-        this.router.put('/:id', this.putTask.bind(this));
+        this.router.post('/', this.postTask.bind(this));
         this.router.delete('/:id', this.deleteTask.bind(this));
     }
 

@@ -25,7 +25,7 @@ class CarsService {
 
     addCar(carInfo, callback) {
         let sql = `INSERT INTO cars
-                    (make, model, year, type, mileage)
+                    (Make, Model, Year, Type, Mileage)
                     VALUES (?, ?, ?, ?, ?)`;
         db.query(sql, [carInfo.make, carInfo.model, carInfo.year, carInfo.type, carInfo.mileage], (err, results) => {
             if (err) {
@@ -38,11 +38,11 @@ class CarsService {
 
     updateCar(id, carInfo, callback) {
         let sql = `UPDATE cars
-                    SET make=?,
-                        model=?,
-                        year=?,
-                        type=?,
-                        mileage=?
+                    SET Make=?,
+                        Model=?,
+                        Year=?,
+                        Type=?,
+                        Mileage=?
                     WHERE id = ?`;
         db.query(sql, [carInfo.make, carInfo.model, carInfo.year, carInfo.type, carInfo.mileage, id], (err, results) => {
             if (err) {
