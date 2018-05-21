@@ -21,7 +21,7 @@ class CarsController {
 
     getSingleCar(req, res) {
         let id = req.params.id;
-        let car = CarsService.getSingleCar();
+        let car = CarsService.getSingleCar(id);
 
         if (!car) {
             res.sendStatus(404);
@@ -64,7 +64,8 @@ class CarsController {
     }
 
     deleteCars(req, res) {
-        let cars = CarsService.deleteCars();
+        let id = req.params.id;
+        let cars = CarsService.deleteCars(id);
         res.send(cars);
     }
 }

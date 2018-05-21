@@ -2,13 +2,13 @@ let db = require('../db');
 
 class CarsService {
     getCars() {
-        let sql = "Select * from task";
+        let sql = "SELECT * from cars";
         return db.query(sql, (err, results) => {
            if (err) throw err;
         });
     }
 
-    getSingleCar() {
+    getSingleCar(id) {
     }
 
     postCars() {
@@ -17,7 +17,7 @@ class CarsService {
     putCars() {
     }
 
-    deleteCars() {
+    deleteCars(id) {
     }
 }
 
