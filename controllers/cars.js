@@ -16,7 +16,11 @@ class CarsController {
 
     getCars(req, res) {
         CarsService.getCars((cars) => {
+          if (!cars) {
+            res.sendStatus(404);
+          } else {
             res.json(cars);
+          }
         });
     }
 
@@ -37,7 +41,7 @@ class CarsController {
         CarsService.addCar(carInfo, (result) => {
             if (result) {
                 res.setHeader('Location', '/cars/' + carInfo.id);
-                res.sendStatus(200);
+                res.sendStatus(201);
             } else {
                 res.sendStatus(500);
             }

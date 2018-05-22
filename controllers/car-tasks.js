@@ -26,7 +26,7 @@ class CarTasksController {
         CarTasksService.addCarTask(carID, taskID, (result) => {
             if (result) {
                 res.setHeader('Location', '/car-tasks/' + taskID);
-                res.sendStatus(200);
+                res.sendStatus(201);
             } else {
                 res.sendStatus(500);
             }
