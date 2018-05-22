@@ -19,12 +19,12 @@ DELETE 	/cars/:id		Deletes car at that ID
 ------------------------------
 GET 	/tasks/												Gets all tasks available (preset in DB)
 
-GET 	/task/:type											Gets all task that apply to a certain car type (no oil change for Electric cars)
+GET 	/tasks/:type											Gets all task that apply to a certain car type (no oil change for Electric cars)
 
 /cars:carID/tasks
 ------------------------------
 GET		/cars/:carID/tasks/									Gets all tasks for a single car
 
-POST	/cars/:carID/task	{taskID}						Creates a single task for a single car
+POST	/cars/:carID/tasks	{taskID}						Creates a single task for a single car
 
-DELETE  /cars/:carID/task/:id								Deletes single task for single car
+DELETE  /cars/:carID/tasks/:id								Deletes single task for single car
