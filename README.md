@@ -1,7 +1,7 @@
 Cartracker.js
 ---------------------------
 This is a Car maintenance REST API done in Node.js using Express.js with MySQL Database.
-It is RESTful and can be extended in various ways. It is modular and services can be swapped out.
+It is RESTful and can be extended in various ways. I left out various, unneeded endpoints but it be easily added back. It is modular and services can be swapped out.
 
 /cars
 ---------------------------
@@ -21,7 +21,7 @@ GET 	/tasks/												Gets all tasks available (preset in DB)
 
 GET 	/tasks/:type											Gets all task that apply to a certain car type (no oil change for Electric cars)
 
-/cars:carID/tasks
+/cars/:carID/tasks
 ------------------------------
 GET		/cars/:carID/tasks/									Gets all tasks for a single car
 
