@@ -27,30 +27,6 @@ class TasksService {
             }
         });
     }
-
-    addTask(taskInfo, callback) {
-        let sql = `INSERT INTO tasks
-                    (name)
-                    VALUES (?)`;
-        db.query(sql, [taskInfo.name], (err, results) => {
-            if (err) {
-                throw err;
-            } else {
-                callback(results);
-            }
-        });
-    };
-
-    deleteTasks(id, callback) {
-        let sql = "DELETE FROM tasks WHERE id = ?";
-        db.query(sql, [id], (err, results) => {
-            if (err) {
-                throw err;
-            } else {
-                callback(results);
-            }
-        });
-    }
 }
 
 module.exports = new TasksService();
