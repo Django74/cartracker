@@ -13,7 +13,7 @@ class TasksService {
     }
 
     /**
-     * Get all tasks that apply to that type of car
+     * Get all tasks that apply only to that type of car
      * @param type - type of car
      * @param callback - function to execute
      */

@@ -23,9 +23,9 @@ class CarTasksService {
         });
     };
 
-    deleteCarTasks(id, callback) {
+    deleteCarTasks(carID, callback) {
         let sql = "DELETE FROM `car-tasks` WHERE id=?";
-        db.query(sql, [id], (err, results) => {
+        db.query(sql, [carID], (err, results) => {
             if (err) {
                 throw err;
             } else {

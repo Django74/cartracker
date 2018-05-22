@@ -34,8 +34,8 @@ class CarTasksController {
     };
 
     deleteCarTask(req, res) {
-        let id = req.params.id;
-        CarTasksService.deleteCarTasks(id, (result) => {
+        let carID = req.params.carID;
+        CarTasksService.deleteCarTasks(carID, (result) => {
             res.send(result);
         });
     }
