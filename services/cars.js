@@ -27,7 +27,7 @@ class CarsService {
         let sql = `INSERT INTO cars
                     (Make, Model, Year, Type, Mileage)
                     VALUES (?, ?, ?, ?, ?)`;
-        db.query(sql, [carInfo.make, carInfo.model, carInfo.year, carInfo.type, carInfo.mileage], (err, results) => {
+        db.query(sql, [carInfo['make'], carInfo['model'], carInfo['year'], carInfo['type'], carInfo['mileage']], (err, results) => {
             if (err) {
                 throw err;
             } else {
