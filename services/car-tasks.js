@@ -1,9 +1,9 @@
 let db = require('../db');
 
 class CarTasksService {
-    getCarTasks(callback) {
-        let sql = "SELECT * FROM carCarTasks";
-        db.query(sql, (err, results) => {
+    getCarTasks(carID, callback) {
+        let sql = "SELECT a.* FROM tasks AS a INNER JOIN `car-tasks` AS b on a.id=b.TaskID AND b.CarID=?";
+        db.query(sql, [carID], (err, results) => {
             if (err) {
                 throw err;
             } else {
@@ -12,27 +12,9 @@ class CarTasksService {
         });
     }
 
-    /**
-     * Get all carCarTasks that apply to that type of car
-     * @param type - type of car
-     * @param callback - function to execute
-     */
-    getCarTasksByType(type, callback) {
-        let sql = "SELECT a.* FROM carCarTasks AS a INNER JOIN `carCarTask-rules` AS b on a.Name=b.Name AND b.Type=?";
-        db.query(sql, [type], (err, results) => {
-            if (err) {
-                throw err;
-            } else {
-                callback(results);
-            }
-        });
-    }
-
-    addCarTask(carCarTaskInfo, callback) {
-        let sql = `INSERT INTO carCarTasks
-                    (name)
-                    VALUES (?)`;
-        db.query(sql, [carCarTaskInfo.name], (err, results) => {
+    addCarTask(carID, taskID, callback) {
+        let sql = "INSERT INTO `car-tasks`(CarID, TaskID) VALUES (?, ?)";
+        db.query(sql, [carID, taskID], (err, results) => {
             if (err) {
                 throw err;
             } else {
@@ -42,7 +24,7 @@ class CarTasksService {
     };
 
     deleteCarTasks(id, callback) {
-        let sql = "DELETE FROM carCarTasks WHERE id = ?";
+        let sql = "DELETE FROM `car-tasks` WHERE id=?";
         db.query(sql, [id], (err, results) => {
             if (err) {
                 throw err;

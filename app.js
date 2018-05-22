@@ -34,12 +34,12 @@ let tasksRouter = express.Router();
 app.use('/tasks', tasksRouter);
 
 let carTasksRouter = express.Router({mergeParams: true});
-carsRouter.use('/:carID/tasks', carTasksRouter);
+carsRouter.use('/:carID/tasks', carTasksRouter); // nested resources
 
+// initialize routes
 let carsAPI = new CarsController(carsRouter);
 let tasksAPI = new TasksController(tasksRouter);
-// app.use('/users', usersRouter);
-
+let carTasksAPI = new CarTasksController(carTasksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

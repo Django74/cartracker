@@ -1,4 +1,4 @@
-let CarTasksService = require('../services/carTasks');
+let CarTasksService = require('../services/car-tasks');
 
 class CarTasksController {
     constructor(router) {
@@ -8,34 +8,24 @@ class CarTasksController {
 
     registerRoutes() {
         this.router.get('/', this.getCarTasks.bind(this));
-        this.router.get('/:type', this.getCarTasksByType.bind(this));
         this.router.post('/', this.postCarTask.bind(this));
         this.router.delete('/:id', this.deleteCarTask.bind(this));
     }
 
     getCarTasks(req, res) {
-        CarTasksService.getCarTasks((carTasks) => {
+        let carID = req.params.carID;
+        console.log(`car id is ${carID}`);
+        CarTasksService.getCarTasks(carID, (carTasks) => {
             res.json(carTasks);
         });
     }
 
-    getCarTasksByType(req, res) {
-        let type = req.params.type;
-        CarTasksService.getCarTasksByType(type, (carTask) => {
-            if (!carTask) {
-                res.sendStatus(404);
-            } else {
-                res.json(carTask);
-            }
-        });
-    }
-
     postCarTask(req, res) {
-        let carTaskInfo = req.body;
-
-        CarTasksService.addCarTask(carTaskInfo, (result) => {
+        let carID = req.params.carID;
+        let taskID = req.body.taskID;
+        CarTasksService.addCarTask(carID, taskID, (result) => {
             if (result) {
-                res.setHeader('Location', '/carTasks/' + carTaskInfo.id);
+                res.setHeader('Location', '/car-tasks/' + taskID);
                 res.sendStatus(200);
             } else {
                 res.sendStatus(500);
