@@ -5,7 +5,7 @@ It is RESTful and can be extended in various ways. I left out various, unneeded 
 
 /cars
 ---------------------------
-GET 	/cars/ 												List all cars/
+GET 	/cars/ 												List all cars
 
 GET 	/cars/:id											List Single car BY ID
 
