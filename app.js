@@ -9,7 +9,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let CarsController = require('./controllers/cars');
 let TasksController = require('./controllers/tasks');
-// let TasksController = require('./controllers/tasks');
+let CarTasksController = require('./controllers/car-tasks');
 
 let app = express();
 let port = process.env.PORT || 3000;
@@ -32,6 +32,9 @@ app.use('/cars', carsRouter);
 
 let tasksRouter = express.Router();
 app.use('/tasks', tasksRouter);
+
+let carTasksRouter = express.Router({mergeParams: true});
+carsRouter.use('/:carID/tasks', carTasksRouter);
 
 let carsAPI = new CarsController(carsRouter);
 let tasksAPI = new TasksController(tasksRouter);
