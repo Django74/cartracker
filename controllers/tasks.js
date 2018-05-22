@@ -8,7 +8,7 @@ class TasksController {
 
     registerRoutes() {
         this.router.get('/', this.getTasks.bind(this));
-        this.router.get('/:id', this.getSingleTask.bind(this));
+        this.router.get('/:type', this.getTasksByType.bind(this));
         this.router.post('/', this.postTask.bind(this));
         this.router.delete('/:id', this.deleteTask.bind(this));
     }
@@ -19,9 +19,9 @@ class TasksController {
         });
     }
 
-    getSingleTask(req, res) {
-        let id = req.params.id;
-        TasksService.getSingleTask(id, (task) => {
+    getTasksByType(req, res) {
+        let type = req.params.type;
+        TasksService.getTasksByType(type, (task) => {
             if (!task) {
                 res.sendStatus(404);
             } else {

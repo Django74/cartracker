@@ -9,6 +9,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let CarsController = require('./controllers/cars');
 let TasksController = require('./controllers/tasks');
+// let TasksController = require('./controllers/tasks');
 
 let app = express();
 let port = process.env.PORT || 3000;
@@ -30,10 +31,10 @@ let carsRouter = express.Router();
 app.use('/cars', carsRouter);
 
 let tasksRouter = express.Router();
-carsRouter.use('/:id/tasks', tasksRouter);
+app.use('/tasks', tasksRouter);
 
 let carsAPI = new CarsController(carsRouter);
-let tasksAPI = new TasksController(carsRouter);
+let tasksAPI = new TasksController(tasksRouter);
 // app.use('/users', usersRouter);
 
 
